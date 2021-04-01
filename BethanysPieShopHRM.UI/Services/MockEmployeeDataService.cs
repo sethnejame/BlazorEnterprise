@@ -11,6 +11,7 @@ namespace BethanysPieShopHRM.UI.Services
         private List<Employee> _employees;
         private List<Country> _countries;
         private List<JobCategory> _jobCategories;
+        public Employee SavedEmployee { get ; set; }
 
         private IEnumerable<Employee> Employees
         {
@@ -41,6 +42,7 @@ namespace BethanysPieShopHRM.UI.Services
                 return _jobCategories;
             }
         }
+
 
         private void InitializeJobCategories()
         {

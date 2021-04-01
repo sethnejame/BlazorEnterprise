@@ -50,7 +50,11 @@ namespace BethanysPieShopHRM.UI.Pages
 
             int.TryParse(EmployeeId, out var employeeId);
 
-            if (employeeId == 0) //new employee is being created
+            if(EmployeeDataService.SavedEmployee != null)
+            {
+                Employee = EmployeeDataService.SavedEmployee;
+            }
+            else if (employeeId == 0) //new employee is being created
             {
                 //add some defaults
                 Employee = new Employee { CountryId = 1, JobCategoryId = 1, BirthDate = DateTime.Now, JoinedDate = DateTime.Now };
@@ -112,6 +116,12 @@ namespace BethanysPieShopHRM.UI.Pages
 
         protected void NavigateToOverview()
         {
+            NavigationManager.NavigateTo("/employeeoverview");
+        }
+
+        protected void TempSave()
+        {
+            EmployeeDataService.SavedEmployee = Employee;
             NavigationManager.NavigateTo("/employeeoverview");
         }
     }
