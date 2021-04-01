@@ -1,11 +1,21 @@
-﻿using BethanysPieShopHRM.Shared;
+﻿using System.Threading.Tasks;
+using BethanysPieShopHRM.Shared;
 
 namespace BethanysPieShopHRM.UI.Services
 {
     public class ExpenseApprovalService : IExpenseApprovalService
     {
-        public ExpenseStatus GetExpenseStatus(Expense expense, Employee employee)
+        private readonly IEmployeeDataService _employeeDataService;
+
+        public ExpenseApprovalService (IEmployeeDataService employeeDataService)
         {
+            _employeeDataService = employeeDataService;
+        }
+
+        public async Task<ExpenseStatus> GetExpenseStatus(Expense expense)
+        {
+            var employee = await _employeeDataService.GetEmployeeDetails(expense.EmployeeId);
+
             if (employee.IsFTE)
             {
                 switch (expense.ExpenseType)
