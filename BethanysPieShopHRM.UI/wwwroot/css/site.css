@@ -313,3 +313,8 @@ a[data-toggle="collapse"] {
 #sidebar .toggle-show {
     display: block;
 }
+
+/* NavLink components will automatically assign .active class to active links */
+.active {
+    font-weight: bold;
+}
