@@ -1,7 +1,7 @@
 ﻿using System.Threading.Tasks;
 using BethanysPieShopHRM.Shared;
 
-namespace BethanysPieShopHRM.UI.Services
+namespace BethanysPieShopHRM.UI.Interfaces
 {
     public interface IExpenseApprovalService
     {

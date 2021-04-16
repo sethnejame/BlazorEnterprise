@@ -1,12 +1,12 @@
-using System.Net.Http;
+using System;
+using BethanysPieShopHRM.UI.Data;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
-using Microsoft.Extensions.Configuration;
-using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using BethanysPieShopHRM.UI.Services;
-using BethanysPieShopHRM.UI.Data;
-using System;
+using BethanysPieShopHRM.UI.Interfaces;
+using Microsoft.Extensions.Configuration;
+using Microsoft.Extensions.DependencyInjection;
 
 namespace BethanysPieShopHRM.UI
 {
@@ -45,7 +45,7 @@ namespace BethanysPieShopHRM.UI
             RegisterTypedClient<ITaskDataService, TaskDataService>(pieShopURI);
             RegisterTypedClient<ISurveyDataService, SurveyDataService>(pieShopURI);
             RegisterTypedClient<IExpenseDataService, ExpenseDataService>(pieShopURI);
-            //services.AddTransient<IJobDataService, JobDataService>();
+            RegisterTypedClient<IJobDataService, JobsDataService>(recruitingURI);
 
             // Register utility services
             services.AddScoped<IEmailService, EmailService>();
